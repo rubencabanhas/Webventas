@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateZonaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateZonaLabel_idZona}" for="idZona" />
+                    <h:inputText id="idZona" value="#{zonaController.selected.idZona}" title="#{bundle.CreateZonaTitle_idZona}" required="true" requiredMessage="#{bundle.CreateZonaRequiredMessage_idZona}"/>
+                    <h:outputLabel value="#{bundle.CreateZonaLabel_ciudad}" for="ciudad" />
+                    <h:inputText id="ciudad" value="#{zonaController.selected.ciudad}" title="#{bundle.CreateZonaTitle_ciudad}" />
+                    <h:outputLabel value="#{bundle.CreateZonaLabel_direccion}" for="direccion" />
+                    <h:inputText id="direccion" value="#{zonaController.selected.direccion}" title="#{bundle.CreateZonaTitle_direccion}" />
+                    <h:outputLabel value="#{bundle.CreateZonaLabel_latitdu}" for="latitdu" />
+                    <h:inputText id="latitdu" value="#{zonaController.selected.latitdu}" title="#{bundle.CreateZonaTitle_latitdu}" />
+                    <h:outputLabel value="#{bundle.CreateZonaLabel_longitud}" for="longitud" />
+                    <h:inputText id="longitud" value="#{zonaController.selected.longitud}" title="#{bundle.CreateZonaTitle_longitud}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{zonaController.create}" value="#{bundle.CreateZonaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{zonaController.prepareList}" value="#{bundle.CreateZonaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateZonaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateDetalleFacturaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateDetalleFacturaLabel_subTotal}" for="subTotal" />
+                    <h:inputText id="subTotal" value="#{detalleFacturaController.selected.subTotal}" title="#{bundle.CreateDetalleFacturaTitle_subTotal}" />
+                    <h:outputLabel value="#{bundle.CreateDetalleFacturaLabel_factura}" for="factura" />
+                    <h:selectOneMenu id="factura" value="#{detalleFacturaController.selected.factura}" title="#{bundle.CreateDetalleFacturaTitle_factura}" required="true" requiredMessage="#{bundle.CreateDetalleFacturaRequiredMessage_factura}">
+                        <f:selectItems value="#{facturaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateDetalleFacturaLabel_pedido}" for="pedido" />
+                    <h:selectOneMenu id="pedido" value="#{detalleFacturaController.selected.pedido}" title="#{bundle.CreateDetalleFacturaTitle_pedido}" required="true" requiredMessage="#{bundle.CreateDetalleFacturaRequiredMessage_pedido}">
+                        <f:selectItems value="#{pedidoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{detalleFacturaController.create}" value="#{bundle.CreateDetalleFacturaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{detalleFacturaController.prepareList}" value="#{bundle.CreateDetalleFacturaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateDetalleFacturaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
