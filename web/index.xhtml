@@ -12,13 +12,13 @@
             <p:messages autoUpdate="true" showDetail="true"/>
             <h:panelGrid columns="2">
                 <p:outputLabel for="txtUsuario" value="Usuario" />
-                <p:inputText id="txtUsuario" value="#{indexController.usuario.usuario}" required="true" />
+                <p:inputText id="txtUsuario" value="#{indexController.nombre}" required="true" />
                 
                 <p:outputLabel for="txtClave" value="Clave" />
-                <p:inputText id="txtClave" value="#{indexController.usuario.clave}" required="true" />
+                <p:password id="txtClave" value="#{indexController.clave}" required="true" />
                 
                 <h:column/>
-                <p:commandButton icon="ui-icon-key" value="Iniciar Sesión" action="#{indexController.inciarSesion()}"/>
+                <p:commandButton icon="ui-icon-key" value="Iniciar Sesión" action="#{indexController.inciarSesion}"/>
             </h:panelGrid>
             <p:separator/>
        
